@@ -2,16 +2,16 @@ import pytest
 from selene import browser
 
 
-
 @pytest.fixture(autouse=True)
 def browser_open():
-     browser.open('https://google.com')
+    browser.open('https://google.com')
 
 
 @pytest.fixture()
-def browser_size(browser_open):
-     browser.driver.maximize_window()
+def browser_size():
+    browser.config.window_width = 1400
+    browser.config.window_height = 900
 
-     yield
+    yield
 
-     browser.quit()
+    browser.quit()
